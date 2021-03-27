@@ -1,0 +1,22 @@
+.navbar {
+	display: flex;
+	justify-content: space-between;
+	padding: 10px;
+	background: var(--gray-blue-color);
+	color: white;
+}
+.navbar li {
+	cursor: pointer;
+}
+.navbar li:hover {
+	color: var(--light-green-color);
+}
+.left-navbar {
+	display: flex;
+}
+.left-navbar > li {
+	margin-left: 15px;
+}
+.right-navbar {
+	display: flex;
+}
