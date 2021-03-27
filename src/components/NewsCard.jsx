@@ -10,10 +10,10 @@ class NewsCard extends React.Component {
 					<div className="all-news-card-contnet">
 						<img
 							src={el.urlToImage}
-							// alt="UNAVAILABLE"
-							onError={(e) => (
-								(e.target.onerror = null), (e.target.src = { imageUnavailable })
-							)}
+							alt="UNAVAILABLE"
+							// onError={(e) => (
+							// 	(e.target.onerror = null), (e.target.src = { imageUnavailable })
+							// )}
 						/>
 						<div className="content">
 							<p className="card-title">{el.title}</p>
