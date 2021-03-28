@@ -1,0 +1,7 @@
+.index-navbar {
+	display: flex;
+}
+.chart canvas {
+	width: 100px !important;
+	height: 50px !important;
+}
