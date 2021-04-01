@@ -2,6 +2,10 @@
 	display: flex;
 }
 .chart canvas {
-	width: 100px !important;
-	height: 50px !important;
+	width: 200px !important;
+	height: 100px !important;
+}
+.chart {
+	display: flex;
+	align-items: center;
 }

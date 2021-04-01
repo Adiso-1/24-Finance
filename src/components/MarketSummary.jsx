@@ -1,39 +1,21 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Line } from 'react-chartjs-2';
 import './MarketSummary.css';
 
-class MarketSummary extends React.Component {
-	state = {
-		labels: Array(100).join('.').split('.'),
-		datasets: [
-			{
-				fill: true,
-				lineTension: 0,
-				backgroundColor: 'green',
-				data: this.props.data,
-			},
-		],
-	};
-	render() {
-		console.log(this.props.data);
-		return (
-			<div className="chart">
-				<Line
-					data={this.state}
-					options={{
-						title: {
-							display: false,
-						},
-						legend: {
-							display: false,
-						},
-						tooltips: {
-							display: false,
-						},
-					}}
-				/>
+const MarketSummary = (props) => {
+	const chartRef = useRef('');
+	console.log(props.data);
+	useEffect(() => {
+		console.log(chartRef.current);
+	}, []);
+
+	return (
+		<div className="chart">
+			<div className="chart-details">
+				<p>{props.name}</p>
 			</div>
-		);
-	}
-}
+			<Line data={props.data} ref={chartRef} width={100} height={50} />
+		</div>
+	);
+};
 export default MarketSummary;

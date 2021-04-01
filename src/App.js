@@ -6,23 +6,21 @@ import Home from './components/Home';
 import Watchlist from './components/Watchlist';
 import Finance from './components/Finance';
 
-class App extends react.Component {
-	render() {
-		return (
-			<Router>
-				<Header />
-				<Route exact path="/">
-					<Home />
-				</Route>
-				<Route exact path="/finance">
-					<Finance />
-				</Route>
-				<Route exact path="/watchlist">
-					<div>Watchlist</div>
-				</Route>
-			</Router>
-		);
-	}
-}
+const App = () => {
+	return (
+		<Router>
+			<Header />
+			<Route exact path="/">
+				<Home />
+			</Route>
+			<Route exact path="/finance">
+				<Finance />
+			</Route>
+			<Route exact path="/watchlist">
+				<div>Watchlist</div>
+			</Route>
+		</Router>
+	);
+};
 
 export default App;
