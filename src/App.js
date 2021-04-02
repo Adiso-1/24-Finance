@@ -1,10 +1,10 @@
 import './App.css';
 import react from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import Header from './components/Header';
-import Home from './components/Home';
-import Watchlist from './components/Watchlist';
-import Finance from './components/Finance';
+import Header from './components/Header/Header';
+import Home from './components/Home/Home';
+import Watchlist from './components/Watchlist/Watchlist';
+import Finance from './components/Finance/Finance';
 
 const App = () => {
 	return (
