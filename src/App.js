@@ -17,7 +17,7 @@ const App = () => {
 				<Finance />
 			</Route>
 			<Route exact path="/watchlist">
-				<div>Watchlist</div>
+				<Watchlist />
 			</Route>
 		</Router>
 	);
