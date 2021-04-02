@@ -6,10 +6,11 @@ const Finance = () => {
 	const time = new Date().getHours() + new Date().getMinutes() / 60;
 	const day = new Date().getDay();
 	const interval = 5;
-	const outPutSize =
-		time - 16.5 > 6.5 && day !== 6 && day !== 7
-			? (6.5 * 60) / interval
-			: ((time - 16.5) * 60) / interval;
+	const outPutSize = 78;
+	// const outPutSize =
+	// 	time - 16.5 > 6.5 && day !== 6 && day !== 7
+	// 		? (6.5 * 60) / interval
+	// 		: ((time - 16.5) * 60) / interval;
 	const stockRequest = [
 		{ symbol: 'MSFT', name: 'Microsoft' },
 		{ symbol: 'AAPL', name: 'Apple' },

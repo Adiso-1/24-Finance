@@ -1,8 +1,12 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './WatchTable.css';
 
 const Watchlist = () => {
 	const [tableData, setTableData] = useState([]);
+
+	useEffect(() => {
+		console.log('effect');
+	}, []);
 	return (
 		<table className="watchlist-table">
 			<thead>

@@ -5,14 +5,19 @@ import AddStock from '../AddStock/AddStock';
 
 const Watchlist = () => {
 	const [watchlistData, setWatchlistData] = useState([]);
+	const [stockToAdd, setStockToAdd] = useState('');
 	const [isAdd, setIsAdd] = useState(false);
 	const handleAddStock = () => {
 		setIsAdd(!isAdd);
 	};
+	const getStock = (stock) => {
+		console.log(stock);
+		setIsAdd(false);
+	};
 	return (
 		<div className="watchlist-container">
 			<button onClick={handleAddStock}>+ Add Symbol</button>
-			{isAdd && <AddStock />}
+			{isAdd && <AddStock getStock={(stock) => getStock(stock)} />}
 			<WatchTable />
 		</div>
 	);
