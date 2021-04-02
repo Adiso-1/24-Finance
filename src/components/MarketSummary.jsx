@@ -20,15 +20,14 @@ const MarketSummary = (props) => {
 				});
 				console.log(data);
 				const quoteArr = [];
-				data.values.map((el) => {
-					quoteArr.push(parseFloat(el.close));
-				});
+				data.values.map((el) => quoteArr.push(parseFloat(el.close)));
 				setChartData({
-					labels: Array(quoteArr.length).join('.').split('.'),
+					// labels: Array(quoteArr.length).join('.').split('.'),
+					labels: Array(78).join('.').split('.'),
 					datasets: [
 						{
 							label: props.name,
-							data: quoteArr,
+							data: quoteArr.reverse(),
 							backgroundColor: ['green'],
 							borderWidth: 0,
 						},
@@ -41,14 +40,16 @@ const MarketSummary = (props) => {
 		};
 		fetchData();
 	}, []);
+
 	return (
 		<div className="chart">
 			<div className="chart-details">
 				<span>{props.name}</span>
-				{/* <span>
-					{chartData.datasets[0].data[chartData.datasets[0].data.length - 1]}
-				</span>
 				<span>
+					{chartData &&
+						chartData.datasets[0].data[chartData.datasets[0].data.length - 1]}
+				</span>
+				{/* <span>
 					{(
 						(chartData.datasets[0].data[chartData.datasets[0].data.length - 1] /
 							chartData.datasets[0].data[0] -

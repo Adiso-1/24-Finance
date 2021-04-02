@@ -4,15 +4,19 @@ import NewsCard from './NewsCard';
 
 const Home = () => {
 	const [articles, setArticles] = useState([]);
-	const generalCategory =
-		'/top-headlines?country=us&apiKey=fe2ce523f8bf473bb146bf06e0a82a4c';
+	console.log(articles);
+
 	useEffect(() => {
 		try {
 			const fetch = async () => {
-				const { data } = await newsApi.get(`${generalCategory}`);
-				setArticles(data.articles);
+				const { data } = await newsApi.get(`/latest-news?`, {
+					params: {
+						language: 'en',
+						apiKey: '8AK5re_Fbv2RyA3NQtg5iODtPj4yIaNJbTap0prfv8ayYnSX',
+					},
+				});
+				setArticles(data.news);
 			};
-
 			fetch();
 		} catch (error) {
 			console.log(error);
