@@ -47,3 +47,19 @@
 .search-btn {
 	cursor: pointer;
 }
+.searched-stocks-container {
+	padding: 5px 0;
+}
+.result-stock-row {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	cursor: pointer;
+	margin: 5px 0;
+}
+.result-stock-row:hover {
+	background: lightblue;
+}
+.result-stock-row > span {
+	width: 25%;
+}

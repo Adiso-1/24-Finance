@@ -5,24 +5,21 @@ import './AddStock.css';
 
 const AddStock = (props) => {
 	const [stock, setStock] = useState('');
+	const [stockPicked, setStockPicked] = useState('');
 	const [stocksList, setStocksList] = useState([]);
 	const [debouncedTerm, setDebouncedTerm] = useState(stock);
 
 	const handleChange = (e) => {
 		setStock(e.target.value);
 	};
-
-	const onSearch = () => {
+	const onSearch = (stock) => {
 		props.getStock(stock);
 	};
-
 	useEffect(() => {
 		const timerId = setTimeout(() => {
-			console.log('setbounce');
 			setDebouncedTerm(stock);
-		}, 500);
+		}, 0);
 		return () => {
-			console.log('timer');
 			clearTimeout(timerId);
 		};
 	}, [stock]);
@@ -33,17 +30,18 @@ const AddStock = (props) => {
 				'https://api.twelvedata.com/stocks?source=account'
 			);
 			let filterData = data.data.filter((el) =>
-				el.name.toLowerCase().includes(stock.toLowerCase())
+				el.symbol.toLowerCase().includes(stock.toLowerCase())
 			);
 			if (filterData.length === 0) {
 				filterData = data.data.filter((el) =>
-					el.symbol.toLowerCase().includes(stock.toLowerCase())
+					el.name.toLowerCase().includes(stock.toLowerCase())
 				);
 			}
-			console.log(filterData);
-			setStocksList(filterData);
+			setStocksList(filterData.slice(0, 10));
 		};
-		search();
+		if (stock) {
+			search();
+		}
 	}, [debouncedTerm]);
 
 	return (
@@ -51,21 +49,30 @@ const AddStock = (props) => {
 			<div className="add-stock-input-container">
 				<input
 					className="add-stock-input"
-					placeholder="AAPL, TSLA, SPY"
+					placeholder="AAPL, TSLA, SPY..."
 					type="text"
 					value={stock}
 					onChange={handleChange}
 				/>
-				<i onClick={onSearch} className="fas fa-search search-btn"></i>
+				<i className="fas fa-search search-btn"></i>
 			</div>
 			<p className="add-stock-instructions">Enter symbols or company names</p>
 			{debouncedTerm && (
-				<div>
-					{stocksList.map((el) => {
+				<div className="searched-stocks-container">
+					<h3>Symbols</h3>
+					{stocksList.map((el, index) => {
 						return (
-							<div key={el.symbol}>
-								<span>{el.name}</span>
+							<div
+								onClick={(e) =>
+									onSearch(e.target.parentElement.firstElementChild.innerText)
+								}
+								className="result-stock-row"
+								key={index}
+							>
 								<span> {el.symbol}</span>
+								<span>{el.name}</span>
+								<span>{el.exchange}</span>
+								<span>{el.type}</span>
 							</div>
 						);
 					})}
