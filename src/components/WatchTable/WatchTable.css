@@ -13,7 +13,24 @@ th {
 	padding: 5px;
 }
 .shares-input {
+	width: fit-content;
 	border: none;
 	outline: none;
 	text-align: center;
+}
+.fa-trash {
+	cursor: pointer;
+	color: red;
+	transition: all 0.2s;
+}
+.fa-trash:hover {
+	transform: scale(1.2);
+}
+.fa-edit {
+	cursor: pointer;
+	color: blue;
+	transition: all 0.2s;
+}
+.fa-edit:hover {
+	transform: scale(1.2);
 }

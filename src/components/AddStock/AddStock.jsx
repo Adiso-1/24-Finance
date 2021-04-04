@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import twelveData from '../../api/twelvedata';
 import './AddStock.css';
 
@@ -8,7 +8,11 @@ const AddStock = (props) => {
 	const [stocksList, setStocksList] = useState([]);
 	const [debouncedTerm, setDebouncedTerm] = useState(stock);
 	const [isStockWatched, setIsStockWatched] = useState(false);
+	const ref = useRef(null);
 
+	useEffect(() => {
+		ref.current.focus();
+	}, []);
 	const handleChange = (e) => {
 		setStock(e.target.value);
 	};
@@ -63,6 +67,7 @@ const AddStock = (props) => {
 		<div className="add-stock-container">
 			<div className="add-stock-input-container">
 				<input
+					ref={ref}
 					className="add-stock-input"
 					placeholder="AAPL, TSLA, SPY..."
 					type="text"

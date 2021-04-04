@@ -1,15 +1,14 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+
 import twelvedata from '../../api/twelvedata';
 import './WatchTable.css';
 
 const WatchTable = (props) => {
 	const [dataToTable, setDataToTable] = useState([]);
+
 	const tableData = [...props.data];
-
 	useEffect(() => {
-		console.log(`props:  ${props.data}`);
-		console.log(`state:  ${dataToTable}`);
-
 		props.data.map((el, i) => {
 			const fetchData = async () => {
 				const { data } = await twelvedata.get('/quote?', {
@@ -27,17 +26,36 @@ const WatchTable = (props) => {
 	}, [props.data]);
 
 	const createTable = (arg) => {
-		console.log(arg);
 		return arg.map((el) => {
-			console.log(el);
 			return (
 				<tbody key={el.id}>
 					<tr>
 						<td className="symbol">{el.symbol}</td>
-						<td className="shares">0</td>
+						<td className="shares">
+							<input
+								className="shares-input"
+								defaultValue={el.shares}
+								type="number"
+								min={0}
+							/>
+						</td>
 						<td className="price">{el.price}</td>
-						<td className="market-value">0</td>
+						<td className="market-value">
+							{Number(el.shares) * Number(el.price)}
+						</td>
 						<td className="last-change">{el.lastChange}%</td>
+						<td className="delete">
+							<i
+								onClick={() => props.removeStock(el.id)}
+								class="fas fa-trash"
+							></i>
+						</td>
+						<td className="edit">
+							<i
+								onClick={(e) => props.editStock(e, el)}
+								class="far fa-edit"
+							></i>
+						</td>
 					</tr>
 				</tbody>
 			);
