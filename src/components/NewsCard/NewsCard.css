@@ -8,7 +8,7 @@
 }
 .news-card-grid-container img {
 	width: 200px;
-	height: 150px;
+	/* height: 150px; */
 }
 .all-news-card-contnet {
 	display: flex;

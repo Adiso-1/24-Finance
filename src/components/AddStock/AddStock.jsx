@@ -1,24 +1,35 @@
 import { useEffect, useState } from 'react';
 import twelveData from '../../api/twelvedata';
-import axios from 'axios';
 import './AddStock.css';
 
 const AddStock = (props) => {
 	const [stock, setStock] = useState('');
-	const [stockPicked, setStockPicked] = useState('');
+	const [stockPicked, setStockPicked] = useState([]);
 	const [stocksList, setStocksList] = useState([]);
 	const [debouncedTerm, setDebouncedTerm] = useState(stock);
+	const [isStockWatched, setIsStockWatched] = useState(false);
 
 	const handleChange = (e) => {
 		setStock(e.target.value);
 	};
 	const onSearch = (stock) => {
-		props.getStock(stock);
+		if (stockPicked.includes(stock)) {
+			setTimeout(() => {
+				setIsStockWatched(false);
+			}, 2000);
+			setIsStockWatched(true);
+		} else {
+			const temp = [...stockPicked];
+			temp.push(stock);
+			setStockPicked(temp);
+			props.getStock(stock);
+		}
 	};
+
 	useEffect(() => {
 		const timerId = setTimeout(() => {
 			setDebouncedTerm(stock);
-		}, 0);
+		}, 200);
 		return () => {
 			clearTimeout(timerId);
 		};
@@ -26,15 +37,19 @@ const AddStock = (props) => {
 
 	useEffect(() => {
 		const search = async () => {
-			const { data } = await axios.get(
-				'https://api.twelvedata.com/stocks?source=account'
+			const { data } = await twelveData.get(
+				`/symbol_search?symbol=${stock.toLowerCase()}`
 			);
-			let filterData = data.data.filter((el) =>
-				el.symbol.toLowerCase().includes(stock.toLowerCase())
+			let filterData = data.data.filter(
+				(el) =>
+					el.country === 'United States' &&
+					el.symbol.toLowerCase().includes(stock.toLowerCase())
 			);
 			if (filterData.length === 0) {
-				filterData = data.data.filter((el) =>
-					el.name.toLowerCase().includes(stock.toLowerCase())
+				filterData = data.data.filter(
+					(el) =>
+						el.country === 'United States' &&
+						el.instrument_name.toLowerCase().includes(stock.toLowerCase())
 				);
 			}
 			setStocksList(filterData.slice(0, 10));
@@ -61,21 +76,65 @@ const AddStock = (props) => {
 				<div className="searched-stocks-container">
 					<h3>Symbols</h3>
 					{stocksList.map((el, index) => {
+						const arrEl = [
+							el.symbol,
+							el.instrument_name,
+							el.exchange,
+							el.instrument_type,
+						];
 						return (
-							<div
-								onClick={(e) =>
-									onSearch(e.target.parentElement.firstElementChild.innerText)
-								}
-								className="result-stock-row"
-								key={index}
-							>
-								<span> {el.symbol}</span>
-								<span>{el.name}</span>
-								<span>{el.exchange}</span>
-								<span>{el.type}</span>
+							<div className="result-stock-row" key={index}>
+								{arrEl.map((el, i) => {
+									return (
+										<span
+											key={i}
+											onClick={(e) =>
+												onSearch(
+													e.target.parentElement.firstElementChild.innerHTML
+												)
+											}
+										>
+											{el}
+										</span>
+									);
+								})}
+								{/* 								
+								<span
+									onClick={(e) =>
+										onSearch(e.target.parentElement.firstElementChild.innerHTML)
+									}
+								>
+									{el.symbol}
+								</span>
+								<span
+									onClick={(e) =>
+										onSearch(e.target.parentElement.firstElementChild.innerHTML)
+									}
+								>
+									{el.instrument_name}
+								</span>
+								<span
+									onClick={(e) =>
+										onSearch(e.target.parentElement.firstElementChild.innerHTML)
+									}
+								>
+									{el.exchange}
+								</span>
+								<span
+									onClick={(e) =>
+										onSearch(e.target.parentElement.firstElementChild.innerHTML)
+									}
+								>
+									{el.instrument_type}
+								</span> */}
 							</div>
 						);
 					})}
+					{isStockWatched && (
+						<div className="watchlist-add-error">
+							STOCK IS IN WATCH LIST ALREADY
+						</div>
+					)}
 				</div>
 			)}
 		</div>

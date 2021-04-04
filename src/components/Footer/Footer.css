@@ -1,0 +1,12 @@
+.footer-container {
+	background: var(--gray-blue-color);
+	color: #fff;
+	padding: 10px;
+}
+.footer-list {
+	display: flex;
+	justify-content: space-around;
+}
+.footer-list li:hover {
+	color: var(--light-green-color);
+}

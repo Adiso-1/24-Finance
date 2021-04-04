@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import defaultImg from '../../images/image-unavailable-icon.jpg';
 import newsApi from '../../api/newsApi';
 import './NewsCard.css';
 
@@ -28,7 +29,10 @@ const NewsCard = (props) => {
 			return (
 				<div className="news-card" key={el.id}>
 					<div className="all-news-card-contnet">
-						<img src={el.image} alt="UNAVAILABLE" />
+						<img
+							src={el.image === 'None' ? defaultImg : el.image}
+							alt="UNAVAILABLE"
+						/>
 						<div className="content">
 							<p className="card-title">{el.title}</p>
 							<p className="card-content">{el.description}</p>

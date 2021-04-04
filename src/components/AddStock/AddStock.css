@@ -63,3 +63,6 @@
 .result-stock-row > span {
 	width: 25%;
 }
+.watchlist-add-error {
+	color: red;
+}

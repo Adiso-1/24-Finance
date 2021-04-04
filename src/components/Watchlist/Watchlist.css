@@ -1,3 +1,16 @@
 .watchlist-container {
 	padding: 10px;
 }
+.watchlist-container > button {
+	font-size: 16px;
+	background: inherit;
+	border: none;
+	padding: 5px;
+	outline: none;
+	color: #0f69ff;
+	cursor: pointer;
+	transition: all 0.2s;
+}
+.watchlist-container > button:hover {
+	color: #324fe1;
+}
