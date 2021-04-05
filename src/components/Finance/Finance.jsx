@@ -1,3 +1,4 @@
+import Footer from '../Footer/Footer';
 import MarketSummary from '../MarketSummary/MarketSummary';
 import NewsCard from '../NewsCard/NewsCard';
 
@@ -56,8 +57,9 @@ const Finance = () => {
 				/>
 			</div>
 			<div>
-				<NewsCard articelNum={5} category="finance" />
+				<NewsCard articelNum={7} category="finance" />
 			</div>
+			<Footer />
 		</div>
 	);
 };

@@ -86,6 +86,7 @@ const Watchlist = () => {
 
 	return (
 		<div>
+			<h1 className="watchlist-header">My Watchlist</h1>
 			<div className="watchlist-container">
 				<button onClick={handleAddStock}>+ Add Symbol</button>
 				{isAdd && <AddStock getStock={(stock) => addStock(stock)} />}

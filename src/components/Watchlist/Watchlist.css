@@ -14,3 +14,7 @@
 .watchlist-container > button:hover {
 	color: #324fe1;
 }
+.watchlist-header,
+.portfolio-news-header {
+	padding: 5px;
+}
