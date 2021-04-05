@@ -5,7 +5,6 @@ import './NewsCard.css';
 
 const NewsCard = (props) => {
 	const [articles, setArticles] = useState([]);
-
 	useEffect(() => {
 		try {
 			const fetch = async () => {
@@ -45,6 +44,13 @@ const NewsCard = (props) => {
 				);
 			}
 		});
-	return <div className="news-card-grid-container">{news}</div>;
+	console.log(news);
+	return (
+		<>
+			{news.length > 0 ? (
+				<div className="news-card-grid-container">{news}</div>
+			) : null}
+		</>
+	);
 };
 export default NewsCard;

@@ -14,7 +14,6 @@ const Watchlist = () => {
 	const [stocksData, setStocksData] = useState([]);
 	const [isEdit, setIsEdit] = useState(false);
 
-	console.log(stocksData);
 	//! READ
 	const retrieveStocks = async () => {
 		const { data } = await mockApi.get('/watchlist');
@@ -61,7 +60,6 @@ const Watchlist = () => {
 	//! EDIT
 	const editStock = async (e, stock, newStock) => {
 		setTempStock(stock);
-		// console.log(e, stock, newStock);
 		setIsEdit(!isEdit);
 	};
 	const finalEdit = async (stock) => {
@@ -106,29 +104,27 @@ const Watchlist = () => {
 					finalEdit={finalEdit}
 				/>
 			)}
-			<div>
-				<hr />
-				<section>
-					<h1 className="portfolio-news-header">Portfolio News</h1>
-					{stocksData.length > 0
-						? stocksData.map((el) => {
-								return (
-									<div className="news-for-watchlist">
-										<h5>Because you follow {el.symbol}</h5>
-										<NewsCard
-											type="search"
-											category="trading"
-											articelNum={3}
-											keywords={el.symbol}
-										/>
-									</div>
-								);
-						  })
-						: null}
-					<NewsCard />
-				</section>
-				<Footer />
-			</div>
+			<hr />
+			<section className="watchlist-news">
+				<h1 className="portfolio-news-header">Watchlist News</h1>
+				{stocksData.length > 0 ? null : <h5>No stocks to watch </h5>}
+				{stocksData.length > 0
+					? stocksData.map((el) => {
+							return (
+								<React.Fragment key={el.id} className="news-for-watchlist">
+									<NewsCard
+										type="search"
+										category="trading"
+										articelNum={3}
+										keywords={el.symbol}
+									/>
+								</React.Fragment>
+							);
+					  })
+					: null}
+				<NewsCard />
+			</section>
+			<Footer />
 		</div>
 	);
 };

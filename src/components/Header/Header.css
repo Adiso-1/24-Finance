@@ -4,6 +4,9 @@
 	padding: 10px;
 	background: var(--gray-blue-color);
 	color: white;
+	position: sticky;
+	width: 100%;
+	top: 0;
 }
 .navbar li {
 	cursor: pointer;
