@@ -41,8 +41,11 @@ const EditStock = (props) => {
 						handleClick();
 						props.setIsEdit(false);
 					}}
+					onKeyPress={(e) => {
+						console.log(e.target);
+					}}
 				>
-					Updeate
+					Update
 				</button>
 			</div>
 		</div>

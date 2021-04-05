@@ -12,3 +12,34 @@
 .header-container {
 	margin-bottom: 10px;
 }
+@media only screen and (max-width: 750px) {
+	.news-card:first-child .all-news-card-contnet {
+		display: flex;
+		text-align: left;
+		align-items: center;
+		flex-direction: column;
+	}
+	.all-news-card-contnet {
+		display: flex;
+		text-align: left;
+		align-items: center;
+		flex-direction: column;
+	}
+	.news-card:first-child,
+	.news-card {
+		grid-column: span 2;
+	}
+	.all-news-card-contnet {
+		display: flex;
+		text-align: left;
+		align-items: center;
+		flex-direction: row;
+	}
+	.news-card-grid-container {
+		display: grid;
+		grid-gap: 10px;
+		grid-template-columns: repeat(1, 1fr);
+		margin: 0 auto;
+		padding: 10px;
+	}
+}

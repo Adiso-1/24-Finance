@@ -19,6 +19,7 @@ const NewsCard = (props) => {
 			};
 			fetch();
 		} catch (error) {
+			console.log('SOMETHING WENT WRONG');
 			console.log(error);
 		}
 	}, []);
@@ -44,7 +45,6 @@ const NewsCard = (props) => {
 				);
 			}
 		});
-	console.log(news);
 	return (
 		<>
 			{news.length > 0 ? (

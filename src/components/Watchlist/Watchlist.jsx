@@ -63,14 +63,17 @@ const Watchlist = () => {
 		setIsEdit(!isEdit);
 	};
 	const finalEdit = async (stock) => {
-		console.log(stock);
-		const response = await mockApi.put(`/watchlist/${stock.id}`, stock);
-		const { id, symbol, shares } = response.data;
-		setStocksData(
-			stocksData.map((stock) => {
-				return stock.id === id ? { ...response.data } : stock;
-			})
-		);
+		try {
+			const response = await mockApi.put(`/watchlist/${stock.id}`, stock);
+			const { id, symbol, shares } = response.data;
+			setStocksData(
+				stocksData.map((stock) => {
+					return stock.id === id ? { ...response.data } : stock;
+				})
+			);
+		} catch (error) {
+			console.log(error);
+		}
 	};
 	useEffect(() => {
 		const getAllStocks = async () => {
@@ -110,15 +113,16 @@ const Watchlist = () => {
 				{stocksData.length > 0 ? null : <h5>No stocks to watch </h5>}
 				{stocksData.length > 0
 					? stocksData.map((el) => {
+							console.log(el);
 							return (
-								<React.Fragment key={el.id} className="news-for-watchlist">
+								<div key={el.id} className="news-for-watchlist">
 									<NewsCard
 										type="search"
 										category="trading"
 										articelNum={3}
 										keywords={el.symbol}
 									/>
-								</React.Fragment>
+								</div>
 							);
 					  })
 					: null}

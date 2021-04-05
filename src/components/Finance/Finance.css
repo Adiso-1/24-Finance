@@ -1,0 +1,5 @@
+.index-navbar {
+	display: flex;
+	padding: 5px;
+	overflow-x: auto;
+}

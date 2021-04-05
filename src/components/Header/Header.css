@@ -23,3 +23,8 @@
 .right-navbar {
 	display: flex;
 }
+@media only screen and (max-width: 550px) {
+	.navbar {
+		justify-content: space-evenly;
+	}
+}

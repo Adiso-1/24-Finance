@@ -65,6 +65,7 @@ const MarketSummary = (props) => {
 				options={{
 					responsive: true,
 					title: { display: false },
+					legend: { display: false },
 					scales: {
 						yAxes: [
 							{

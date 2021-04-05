@@ -1,6 +1,7 @@
 import Footer from '../Footer/Footer';
 import MarketSummary from '../MarketSummary/MarketSummary';
 import NewsCard from '../NewsCard/NewsCard';
+import './Finance.css';
 
 const Finance = () => {
 	const apiKey = 'f2bdff475b4b4faaa092bd8ad2f3c0e5';
