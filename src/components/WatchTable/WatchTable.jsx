@@ -1,30 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
-import twelvedata from '../../api/twelvedata';
 import './WatchTable.css';
 
 const WatchTable = (props) => {
-	const [dataToTable, setDataToTable] = useState([]);
-
-	const tableData = [...props.data];
-	useEffect(() => {
-		props.data.map((el, i) => {
-			const fetchData = async () => {
-				const { data } = await twelvedata.get('/quote?', {
-					params: {
-						symbol: el.symbol,
-						apikey: 'f2bdff475b4b4faaa092bd8ad2f3c0e5',
-					},
-				});
-				tableData[i].price = data.close;
-				tableData[i].lastChange = data.percent_change;
-			};
-			fetchData();
-		});
-		setDataToTable(tableData);
-	}, [props.data]);
-
 	const createTable = (arg) => {
 		return arg.map((el) => {
 			return (
@@ -47,13 +26,13 @@ const WatchTable = (props) => {
 						<td className="delete">
 							<i
 								onClick={() => props.removeStock(el.id)}
-								class="fas fa-trash"
+								className="fas fa-trash"
 							></i>
 						</td>
 						<td className="edit">
 							<i
 								onClick={(e) => props.editStock(e, el)}
-								class="far fa-edit"
+								className="far fa-edit"
 							></i>
 						</td>
 					</tr>
@@ -61,6 +40,7 @@ const WatchTable = (props) => {
 			);
 		});
 	};
+
 	return (
 		<table className="watchlist-table">
 			<thead>
@@ -72,7 +52,7 @@ const WatchTable = (props) => {
 					<th>Last Change</th>
 				</tr>
 			</thead>
-			{dataToTable.length > 0 ? createTable(dataToTable) : null}
+			{createTable(props.data)}
 		</table>
 	);
 };

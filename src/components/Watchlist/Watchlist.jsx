@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import mockApi from '../../api/mockApi';
+import twelveData from '../../api/twelvedata';
 import './Watchlist.css';
 import WatchTable from '../WatchTable/WatchTable';
 import AddStock from '../AddStock/AddStock';
@@ -10,10 +11,27 @@ const Watchlist = () => {
 	const [stocksData, setStocksData] = useState([]);
 	const [isEdit, setIsEdit] = useState(false);
 
-	console.log(stocksData);
 	//! READ
 	const retrieveStocks = async () => {
 		const { data } = await mockApi.get('/watchlist');
+		const x = await Promise.all(
+			data.map(async (el, i) => {
+				const response = await twelveData.get('/quote?', {
+					params: {
+						symbol: el.symbol,
+						apikey: '8a95a209d3424afd86179d7911286784',
+					},
+				});
+				const obj = {
+					...data[i],
+					price: response.data.close,
+					lastChange: response.data.percent_change,
+				};
+				return obj;
+			})
+		);
+		console.log(x);
+		setStocksData(x);
 		return data;
 	};
 	//! CREATE
@@ -23,6 +41,7 @@ const Watchlist = () => {
 			shares: 0,
 		});
 		setStocksData([...stocksData, data]);
+		await retrieveStocks();
 		setIsAdd(false);
 	};
 	//! DELETE
@@ -48,9 +67,6 @@ const Watchlist = () => {
 	useEffect(() => {
 		const getAllStocks = async () => {
 			const allStocks = await retrieveStocks();
-			if (allStocks) {
-				setStocksData(allStocks);
-			}
 		};
 		getAllStocks();
 	}, []);
@@ -64,13 +80,13 @@ const Watchlist = () => {
 			<div className="watchlist-container">
 				<button onClick={handleAddStock}>+ Add Symbol</button>
 				{isAdd && <AddStock getStock={(stock) => addStock(stock)} />}
-				{stocksData.length > 0 && (
+				{stocksData.length > 0 ? (
 					<WatchTable
 						removeStock={(id) => removeStock(id)}
 						editStock={(e, stock) => editStock(e, stock)}
 						data={stocksData}
 					/>
-				)}
+				) : null}
 				{isEdit && <input type="number" />}
 			</div>
 			<div>

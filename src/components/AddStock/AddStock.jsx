@@ -103,35 +103,6 @@ const AddStock = (props) => {
 										</span>
 									);
 								})}
-								{/* 								
-								<span
-									onClick={(e) =>
-										onSearch(e.target.parentElement.firstElementChild.innerHTML)
-									}
-								>
-									{el.symbol}
-								</span>
-								<span
-									onClick={(e) =>
-										onSearch(e.target.parentElement.firstElementChild.innerHTML)
-									}
-								>
-									{el.instrument_name}
-								</span>
-								<span
-									onClick={(e) =>
-										onSearch(e.target.parentElement.firstElementChild.innerHTML)
-									}
-								>
-									{el.exchange}
-								</span>
-								<span
-									onClick={(e) =>
-										onSearch(e.target.parentElement.firstElementChild.innerHTML)
-									}
-								>
-									{el.instrument_type}
-								</span> */}
 							</div>
 						);
 					})}
