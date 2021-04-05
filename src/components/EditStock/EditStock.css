@@ -1,0 +1,52 @@
+.edit-container {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	border: 1px solid #000;
+	background: inherit;
+	border-radius: 10px;
+	width: fit-content;
+	margin: auto;
+	padding: 50px;
+	position: relative;
+	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+	font-size: 25px;
+}
+.fa-window-close {
+	color: red;
+	position: absolute;
+	cursor: pointer;
+	font-size: 30px;
+	top: 10px;
+	left: 10px;
+}
+.edit-data > * {
+	padding: 5px 0;
+}
+.button-container {
+	display: flex;
+	justify-content: center;
+	width: 100%;
+	margin-top: 20px;
+}
+.button-container button {
+	padding: 5px;
+	width: 70%;
+	background: var(--light-green-color);
+	border: none;
+	border-radius: 5px;
+	font-size: 16px;
+	font-weight: bold;
+	color: #222;
+	cursor: pointer;
+}
+.button-container button:hover {
+	background: var(--green-color);
+}
+.input input {
+	padding-left: 10px;
+	width: 30%;
+	font-size: 22px;
+	border: none;
+	outline: none;
+}

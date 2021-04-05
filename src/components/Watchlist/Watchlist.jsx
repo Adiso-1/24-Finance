@@ -4,9 +4,12 @@ import twelveData from '../../api/twelvedata';
 import './Watchlist.css';
 import WatchTable from '../WatchTable/WatchTable';
 import AddStock from '../AddStock/AddStock';
+import EditStock from '../EditStock/EditStock';
+import NewsCard from '../NewsCard/NewsCard';
 import Footer from '../Footer/Footer';
 
 const Watchlist = () => {
+	const [tempStock, setTempStock] = useState({});
 	const [isAdd, setIsAdd] = useState(false);
 	const [stocksData, setStocksData] = useState([]);
 	const [isEdit, setIsEdit] = useState(false);
@@ -19,18 +22,20 @@ const Watchlist = () => {
 				const response = await twelveData.get('/quote?', {
 					params: {
 						symbol: el.symbol,
+						// apikey: 'f2bdff475b4b4faaa092bd8ad2f3c0e5',
 						apikey: '8a95a209d3424afd86179d7911286784',
 					},
 				});
 				const obj = {
 					...data[i],
-					price: response.data.close,
-					lastChange: response.data.percent_change,
+					marketValue:
+						data[i].shares * parseFloat(response.data.close).toFixed(2),
+					price: parseFloat(response.data.close).toFixed(2),
+					lastChange: parseFloat(response.data.percent_change).toFixed(2),
 				};
 				return obj;
 			})
 		);
-		console.log(x);
 		setStocksData(x);
 		return data;
 	};
@@ -53,20 +58,24 @@ const Watchlist = () => {
 		setStocksData(newStockList);
 	};
 	//! EDIT
-	const editStock = async (e, stock) => {
-		const newValue =
-			e.target.parentElement.parentElement.firstElementChild.nextElementSibling
-				.firstElementChild.value;
-		const newObj = {
-			symbol: e.symbol,
-			shares: Number(newValue),
-		};
-		const { data } = await mockApi.put(`/watchlist/${stock.id}`, newObj);
+	const editStock = async (e, stock, newStock) => {
+		setTempStock(stock);
+		// console.log(e, stock, newStock);
+		setIsEdit(!isEdit);
 	};
-
+	const finalEdit = async (stock) => {
+		console.log(stock);
+		const response = await mockApi.put(`/watchlist/${stock.id}`, stock);
+		const { id, symbol, shares } = response.data;
+		setStocksData(
+			stocksData.map((stock) => {
+				return stock.id === id ? { ...response.data } : stock;
+			})
+		);
+	};
 	useEffect(() => {
 		const getAllStocks = async () => {
-			const allStocks = await retrieveStocks();
+			await retrieveStocks();
 		};
 		getAllStocks();
 	}, []);
@@ -83,13 +92,24 @@ const Watchlist = () => {
 				{stocksData.length > 0 ? (
 					<WatchTable
 						removeStock={(id) => removeStock(id)}
-						editStock={(e, stock) => editStock(e, stock)}
+						editStock={(e, stock, newStock) => editStock(e, stock, newStock)}
 						data={stocksData}
 					/>
 				) : null}
-				{isEdit && <input type="number" />}
 			</div>
+			{isEdit && (
+				<EditStock
+					stock={tempStock}
+					setIsEdit={setIsEdit}
+					finalEdit={finalEdit}
+				/>
+			)}
 			<div>
+				<hr />
+				<section>
+					<h1 className="portfolio-news-header">Portfolio News</h1>
+					<NewsCard />
+				</section>
 				<Footer />
 			</div>
 		</div>

@@ -1,7 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-
 import './WatchTable.css';
+import { Link } from 'react-router-dom';
 
 const WatchTable = (props) => {
 	const createTable = (arg) => {
@@ -9,20 +7,23 @@ const WatchTable = (props) => {
 			return (
 				<tbody key={el.id}>
 					<tr>
-						<td className="symbol">{el.symbol}</td>
-						<td className="shares">
-							<input
-								className="shares-input"
-								defaultValue={el.shares}
-								type="number"
-								min={0}
-							/>
+						<td className="symbol">
+							<Link to={{ pathname: `/watchlist/${el.symbol}` }}>
+								{el.symbol}
+							</Link>
 						</td>
+						<td className="shares">{el.shares}</td>
 						<td className="price">{el.price}</td>
-						<td className="market-value">
-							{Number(el.shares) * Number(el.price)}
+						<td className="market-value">{el.marketValue}</td>
+						<td
+							className={
+								Number(el.lastChange) > 0
+									? 'last-change green'
+									: 'last-change red'
+							}
+						>
+							{el.lastChange}%
 						</td>
-						<td className="last-change">{el.lastChange}%</td>
 						<td className="delete">
 							<i
 								onClick={() => props.removeStock(el.id)}
@@ -31,11 +32,14 @@ const WatchTable = (props) => {
 						</td>
 						<td className="edit">
 							<i
-								onClick={(e) => props.editStock(e, el)}
+								onClick={(e) => {
+									props.editStock(e, el);
+								}}
 								className="far fa-edit"
 							></i>
 						</td>
 					</tr>
+					<tr className="break"></tr>
 				</tbody>
 			);
 		});

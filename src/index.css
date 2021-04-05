@@ -7,6 +7,8 @@
 	--gray-color: #999999;
 	--blue-color: #3498db;
 	--purple-color: #7c51a0;
+	--table-hover-color: #d8ffff;
+	--link-color: #0f69ff;
 }
 * {
 	padding: 0;

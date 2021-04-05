@@ -9,8 +9,13 @@ tr,
 td,
 th {
 	text-align: center;
-	border: 1px solid black;
 	padding: 5px;
+}
+tbody > tr {
+	border: 1px solid black;
+}
+tbody :hover {
+	background: var(--table-hover-color);
 }
 .shares-input {
 	width: fit-content;
@@ -33,4 +38,16 @@ th {
 }
 .fa-edit:hover {
 	transform: scale(1.2);
+}
+.break {
+	height: 4px;
+}
+.symbol {
+	color: var(--link-color);
+}
+.green {
+	color: green;
+}
+.red {
+	color: red;
 }
