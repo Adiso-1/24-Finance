@@ -52,11 +52,14 @@
 		align-items: center;
 		flex-direction: column;
 	}
-	table {
+	.watchlist-table {
 		font-size: 14px;
 		margin: 0;
 	}
 	.edit-container {
 		width: 85%;
+	}
+	.watchlist-container {
+		padding: 5px;
 	}
 }

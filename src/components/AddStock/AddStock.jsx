@@ -64,7 +64,14 @@ const AddStock = (props) => {
 	}, [debouncedTerm]);
 
 	return (
-		<div className="add-stock-container">
+		<div
+			onKeyDown={(e) => {
+				if (e.code === 'Escape') {
+					props.setIsAdd(false);
+				}
+			}}
+			className="add-stock-container"
+		>
 			<div className="add-stock-input-container">
 				<input
 					ref={ref}

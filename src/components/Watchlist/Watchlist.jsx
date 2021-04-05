@@ -91,7 +91,9 @@ const Watchlist = () => {
 			<h1 className="watchlist-header">My Watchlist</h1>
 			<div className="watchlist-container">
 				<button onClick={handleAddStock}>+ Add Symbol</button>
-				{isAdd && <AddStock getStock={(stock) => addStock(stock)} />}
+				{isAdd && (
+					<AddStock setIsAdd={setIsAdd} getStock={(stock) => addStock(stock)} />
+				)}
 				{stocksData.length > 0 ? (
 					<WatchTable
 						removeStock={(id) => removeStock(id)}
@@ -113,7 +115,6 @@ const Watchlist = () => {
 				{stocksData.length > 0 ? null : <h5>No stocks to watch </h5>}
 				{stocksData.length > 0
 					? stocksData.map((el) => {
-							console.log(el);
 							return (
 								<div key={el.id} className="news-for-watchlist">
 									<NewsCard

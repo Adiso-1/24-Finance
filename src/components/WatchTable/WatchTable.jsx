@@ -13,8 +13,19 @@ const WatchTable = (props) => {
 							</Link>
 						</td>
 						<td className="shares">{el.shares}</td>
-						<td className="price">{el.price}</td>
-						<td className="market-value">{el.marketValue}</td>
+						<td className="price">
+							{parseFloat(el.price)
+								.toFixed(2)
+								.toString()
+								.replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+						</td>
+						<td className="market-value">
+							{parseFloat(el.marketValue)
+								.toFixed(2)
+								.toString()
+								.replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+							&nbsp;$
+						</td>
 						<td
 							className={
 								Number(el.lastChange) > 0

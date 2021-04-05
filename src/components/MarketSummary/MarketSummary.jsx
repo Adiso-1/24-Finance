@@ -45,18 +45,26 @@ const MarketSummary = (props) => {
 				<span>{props.name}</span>
 				<span>
 					{Object.keys(chartData).length &&
-						chartData.datasets[0].data[chartData.datasets[0].data.length - 1]}
+						parseFloat(
+							chartData.datasets[0].data[chartData.datasets[0].data.length - 1]
+						)
+							.toFixed(2)
+							.toString()
+							.replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
 				</span>
 				<span>
 					{Object.keys(chartData).length &&
-						(
+						parseFloat(
 							(chartData.datasets[0].data[
 								chartData.datasets[0].data.length - 1
 							] /
 								chartData.datasets[0].data[0] -
 								1) *
-							100
-						).toFixed(2)}
+								100
+						)
+							.toFixed(2)
+							.toString()
+							.replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
 					%
 				</span>
 			</div>

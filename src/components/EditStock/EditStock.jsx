@@ -8,13 +8,25 @@ const EditStock = (props) => {
 		ref.current.focus();
 	}, []);
 	const newStock = { ...props.stock };
+
 	const handleClick = () => {
 		newStock.shares = Number(shares);
 		newStock.marketValue = Number(shares) * Number(newStock.price);
 		return props.finalEdit(newStock);
 	};
 	return (
-		<div className="edit-container">
+		<div
+			onKeyDown={(e) => {
+				if (e.code === 'Enter' || e.code === 'NumpadEnter') {
+					handleClick();
+					props.setIsEdit(false);
+				}
+				if (e.code === 'Escape') {
+					props.setIsEdit(false);
+				}
+			}}
+			className="edit-container"
+		>
 			<h2>Edit {props.stock.symbol} Shares</h2>
 			<i
 				onClick={() => props.setIsEdit(false)}
@@ -40,9 +52,6 @@ const EditStock = (props) => {
 					onClick={(e) => {
 						handleClick();
 						props.setIsEdit(false);
-					}}
-					onKeyPress={(e) => {
-						console.log(e.target);
 					}}
 				>
 					Update
