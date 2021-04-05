@@ -10,7 +10,7 @@ const Home = () => {
 				<img src={iconImg} alt="ICON 24 News & Finance" />
 				<h1 className="header">24 News & Finance</h1>
 			</div>
-			{<NewsCard articelNum={10} category="general" />}
+			{<NewsCard type="latest-news" articelNum={10} category="general" />}
 			<Footer />
 		</div>
 	);

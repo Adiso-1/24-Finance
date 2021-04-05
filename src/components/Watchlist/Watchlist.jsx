@@ -14,6 +14,7 @@ const Watchlist = () => {
 	const [stocksData, setStocksData] = useState([]);
 	const [isEdit, setIsEdit] = useState(false);
 
+	console.log(stocksData);
 	//! READ
 	const retrieveStocks = async () => {
 		const { data } = await mockApi.get('/watchlist');
@@ -109,6 +110,21 @@ const Watchlist = () => {
 				<hr />
 				<section>
 					<h1 className="portfolio-news-header">Portfolio News</h1>
+					{stocksData.length > 0
+						? stocksData.map((el) => {
+								return (
+									<div className="news-for-watchlist">
+										<h5>Because you follow {el.symbol}</h5>
+										<NewsCard
+											type="search"
+											category="trading"
+											articelNum={3}
+											keywords={el.symbol}
+										/>
+									</div>
+								);
+						  })
+						: null}
 					<NewsCard />
 				</section>
 				<Footer />

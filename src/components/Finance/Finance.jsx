@@ -57,7 +57,7 @@ const Finance = () => {
 				/>
 			</div>
 			<div>
-				<NewsCard articelNum={7} category="finance" />
+				<NewsCard type="latest-news" articelNum={7} category="finance" />
 			</div>
 			<Footer />
 		</div>

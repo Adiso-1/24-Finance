@@ -18,3 +18,9 @@
 .portfolio-news-header {
 	padding: 5px;
 }
+.news-for-watchlist {
+	padding: 5px;
+}
+.news-for-watchlist h5 {
+	text-decoration: underline;
+}

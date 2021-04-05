@@ -9,10 +9,10 @@ const NewsCard = (props) => {
 	useEffect(() => {
 		try {
 			const fetch = async () => {
-				const { data } = await newsApi.get(`/latest-news?`, {
+				const { data } = await newsApi.get(`/${props.type}?`, {
 					params: {
 						category: props.category,
-						language: 'en',
+						keywords: props.keywords || '',
 						apiKey: '8AK5re_Fbv2RyA3NQtg5iODtPj4yIaNJbTap0prfv8ayYnSX',
 					},
 				});
