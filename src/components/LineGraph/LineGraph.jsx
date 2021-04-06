@@ -89,10 +89,20 @@ const LineGraph = (props) => {
 							radius: 0,
 						},
 					},
+					hover: {
+						mode: 'nearest',
+						intersect: true,
+					},
 					scales: {
 						yAxes: [
 							{
 								ticks: {
+									suggestedMax:
+										Object.keys(chartData).length &&
+										Math.max.apply(chartData.datasets[0].data),
+									suggestedMin:
+										Object.keys(chartData).length &&
+										Math.min.apply(chartData.datasets[0].data),
 									autoSkip: true,
 									beginAtZero: false,
 								},

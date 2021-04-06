@@ -45,7 +45,7 @@
 		flex-direction: column;
 	}
 	.graph .chart-graph > canvas {
-		height: 160px !important;
+		height: 200px !important;
 		width: 100% !important;
 	}
 }
