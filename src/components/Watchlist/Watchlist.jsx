@@ -112,7 +112,12 @@ const Watchlist = () => {
 			<hr />
 			<section className="watchlist-news">
 				<h1 className="portfolio-news-header">Watchlist News</h1>
-				{stocksData.length > 0 ? null : <h5>No stocks to watch </h5>}
+				{stocksData.length > 0 ? null : (
+					<div>
+						<h5>No stocks to watch </h5>
+						<Footer stickToBottom={'stick-to-bottom'} />
+					</div>
+				)}
 				{stocksData.length > 0
 					? stocksData.map((el) => {
 							return (
@@ -128,8 +133,8 @@ const Watchlist = () => {
 					  })
 					: null}
 				<NewsCard />
+				<Footer stickToBottom={''} />
 			</section>
-			<Footer />
 		</div>
 	);
 };

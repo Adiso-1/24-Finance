@@ -10,3 +10,8 @@
 .footer-list li:hover {
 	color: var(--light-green-color);
 }
+.stick-to-bottom {
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+}

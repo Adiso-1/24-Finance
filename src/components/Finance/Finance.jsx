@@ -5,18 +5,17 @@ import './Finance.css';
 
 const Finance = () => {
 	const apiKey = 'f2bdff475b4b4faaa092bd8ad2f3c0e5';
-	const time = new Date().getHours() + new Date().getMinutes() / 60;
+	const time = new Date().getTime();
 	const day = new Date().getDay();
-	const interval = 5;
-	const outPutSize = 78;
-	// const outPutSize =
-	// 	time - 16.5 > 6.5 && day !== 6 && day !== 7
-	// 		? (6.5 * 60) / interval
-	// 		: ((time - 16.5) * 60) / interval;
-	// const stockRequest = [
-	// 	{ symbol: 'MSFT', name: 'Microsoft' },
-	// 	{ symbol: 'AAPL', name: 'Apple' },
-	// ];
+	const interval = 1;
+	console.log(time);
+	console.log(day);
+
+	// const outPutSize = 78;
+	const outPutSize =
+		time - 16.5 > 6.5 && day !== 6 && day !== 0
+			? (6.5 * 60) / interval
+			: ((time - 16.5) * 60) / interval;
 
 	return (
 		<div>

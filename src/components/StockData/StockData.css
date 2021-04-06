@@ -1,0 +1,44 @@
+.green-color {
+	color: green;
+}
+.red-color {
+	color: red;
+}
+.container {
+	padding: 10px;
+	display: flex;
+	max-width: 1400px;
+	margin: 0 auto;
+}
+.stock-numbers {
+	display: flex;
+	align-items: center;
+}
+.stock-numbers h1 {
+	margin-right: 10px;
+}
+.stock-name p,
+.close-time {
+	font-size: 14px;
+	color: #999999;
+}
+.stock-page-header > div {
+	margin-bottom: 10px;
+}
+.break {
+	height: 4px;
+}
+.table td {
+	text-align: left;
+}
+.table tbody tr {
+	border-left: 1px solid var(--dark-gray-col);
+	border-right: 1px solid var(--dark-gray-col);
+}
+.graph {
+	margin: 0 auto;
+}
+.chart canvas {
+	width: 800px;
+	margin: 0 auto;
+}

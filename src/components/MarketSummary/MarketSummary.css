@@ -7,6 +7,7 @@
 	display: flex;
 	align-items: center;
 }
+
 .chart-details {
 	display: flex;
 	flex-direction: column;
@@ -36,7 +37,7 @@
 
 /* Handle on hover */
 .index-navbar::-webkit-scrollbar-thumb:hover {
-	background: var(--dark-gray-color);
+	background: var(--green-color);
 }
 @media only screen and (max-width: 450px) {
 	.chart-details {

@@ -1,9 +1,9 @@
 import './Footer.css';
 import { Link } from 'react-router-dom';
 
-const Footer = () => {
+const Footer = (props) => {
 	return (
-		<div className="footer-container">
+		<div className={`footer-container ${props.stickToBottom}`}>
 			<ul className="footer-list">
 				<li>
 					<Link to="/https://github.com/Adiso-1">

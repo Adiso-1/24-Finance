@@ -17,11 +17,12 @@ const MarketSummary = (props) => {
 						apikey: props.apikey,
 					},
 				});
+				console.log(data);
 				const quoteArr = [];
 				data.values.map((el) => quoteArr.push(parseFloat(el.close)));
 				setChartData({
-					// labels: Array(quoteArr.length).join('.').split('.'),
-					labels: Array(78).join('.').split('.'),
+					labels: Array(quoteArr.length).join('.').split('.'),
+					// labels: Array(78).join('.').split('.'),
 					datasets: [
 						{
 							label: props.name,

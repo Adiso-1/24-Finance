@@ -4,6 +4,7 @@ import Header from './components/Header/Header';
 import Home from './components/Home/Home';
 import Watchlist from './components/Watchlist/Watchlist';
 import Finance from './components/Finance/Finance';
+import StockData from './components/StockData/StockData.jsx';
 
 const App = () => {
 	return (
@@ -17,6 +18,9 @@ const App = () => {
 			</Route>
 			<Route exact path="/watchlist">
 				<Watchlist />
+			</Route>
+			<Route exact path="/watchlist/:symbol">
+				<StockData />
 			</Route>
 		</Router>
 	);

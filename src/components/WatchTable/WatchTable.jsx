@@ -8,7 +8,12 @@ const WatchTable = (props) => {
 				<tbody key={el.id}>
 					<tr>
 						<td className="symbol">
-							<Link to={{ pathname: `/watchlist/${el.symbol}` }}>
+							<Link
+								to={{
+									pathname: `/watchlist/${el.symbol}`,
+									query: { data: el },
+								}}
+							>
 								{el.symbol}
 							</Link>
 						</td>
