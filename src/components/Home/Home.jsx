@@ -1,5 +1,6 @@
 import NewsCard from '../NewsCard/NewsCard';
 import Footer from '../Footer/Footer';
+import LineGraph from '../LineGraph/LineGraph';
 import iconImg from '../../images/finance-icon.png';
 import './Home.css';
 

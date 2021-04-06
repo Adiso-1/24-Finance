@@ -4,11 +4,3 @@
 	overflow-x: auto;
 	justify-content: center;
 }
-@media only screen and (max-width: 1400px) {
-	.index-navbar {
-		display: flex;
-		padding: 5px;
-		overflow-x: auto;
-		justify-content: flex-start;
-	}
-}

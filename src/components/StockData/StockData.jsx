@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import twelveData from '../../api/twelvedata';
 import Footer from '../Footer/Footer';
 import NewsCard from '../NewsCard/NewsCard';
-import MarketSummary from '../MarketSummary/MarketSummary';
+import LineGraph from '../LineGraph/LineGraph';
 import './StockData.css';
 
 const StockData = () => {
@@ -126,18 +126,18 @@ const StockData = () => {
 						</div>
 					</div>
 					<div className="graph">
-						<MarketSummary
-							name={data.name}
+						<LineGraph
 							symbol={data.symbol}
-							interval={`1min`}
-							outputsize={390}
-							apikey={apikey}
+							interval="1min"
+							apikey="f2bdff475b4b4faaa092bd8ad2f3c0e5"
+							width={800}
+							height={300}
 						/>
 					</div>
 				</div>
 			) : null}
 			<NewsCard type="search" keywords={symbol} articelNum={4} />
-			<Footer stickToBottom="stick-to-bottom" />
+			<Footer />
 		</>
 	);
 };

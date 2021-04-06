@@ -1,0 +1,48 @@
+.chart-graph {
+	display: flex;
+	margin: 0 10px;
+}
+.index-navbar {
+	display: flex;
+}
+.more-data {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+.more-data > * {
+	margin-bottom: 10px;
+	font-size: 14px;
+}
+.red {
+	color: red;
+}
+.green {
+	color: green;
+}
+.more-data-close > span {
+	margin-right: 5px;
+}
+.index-navbar::-webkit-scrollbar {
+	height: 5px;
+}
+
+/* Track */
+.index-navbar::-webkit-scrollbar-track {
+	background: #f1f1f1;
+}
+
+/* Handle */
+.index-navbar::-webkit-scrollbar-thumb {
+	background: var(--gray-blue-color);
+}
+
+/* Handle on hover */
+.index-navbar::-webkit-scrollbar-thumb:hover {
+	background: var(--green-color);
+}
+@media only screen and (max-width: 550px) {
+	.index-navbar::-webkit-scrollbar {
+		height: 0px;
+	}
+}
