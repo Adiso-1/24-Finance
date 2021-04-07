@@ -12,6 +12,14 @@
 .header-container {
 	margin-bottom: 10px;
 }
+.home-container .footer-container {
+	background: var(--gray-blue-color);
+	color: #fff;
+	padding: 10px;
+	position: absolute;
+	width: 100%;
+	bottom: auto;
+}
 @media only screen and (max-width: 750px) {
 	.news-card:first-child .all-news-card-contnet {
 		display: flex;

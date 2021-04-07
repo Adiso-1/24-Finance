@@ -89,7 +89,7 @@ const Watchlist = () => {
 	};
 	console.log(stocksData);
 	return (
-		<div>
+		<div className="watchlist-page">
 			<h1 className="watchlist-header">My Watchlist</h1>
 			<div className="watchlist-container">
 				<button onClick={handleAddStock}>+ Add Symbol</button>
@@ -139,9 +139,8 @@ const Watchlist = () => {
 							);
 					  })
 					: null}
-				<NewsCard />
-				<Footer stickToBottom={''} />
 			</section>
+			<Footer />
 		</div>
 	);
 };

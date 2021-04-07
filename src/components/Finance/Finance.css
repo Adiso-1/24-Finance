@@ -4,11 +4,19 @@
 	overflow-x: auto;
 	justify-content: center;
 }
-@media only screen and (max-width: 1400px) {
+@media only screen and (max-width: 1350px) {
 	.index-navbar {
 		display: flex;
 		padding: 5px;
 		overflow-x: auto;
 		justify-content: left;
+	}
+	.finance-container .footer-container {
+		background: var(--gray-blue-color);
+		color: #fff;
+		padding: 10px;
+		position: absolute;
+		width: 100%;
+		bottom: auto;
 	}
 }

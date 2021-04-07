@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import defaultImg from '../../images/image-unavailable-icon.jpg';
 import newsApi from '../../api/newsApi';
+import Spinner from '../Spinner/Spinner';
 import './NewsCard.css';
 
 const NewsCard = (props) => {
 	const [articles, setArticles] = useState([]);
+	const [isLoading, setIsLoading] = useState(false);
 	useEffect(() => {
 		try {
+			setIsLoading(true);
 			const fetch = async () => {
 				const { data } = await newsApi.get(`/${props.type}?`, {
 					params: {
@@ -16,6 +19,7 @@ const NewsCard = (props) => {
 					},
 				});
 				setArticles(data.news);
+				setIsLoading(false);
 			};
 			fetch();
 		} catch (error) {
@@ -49,7 +53,9 @@ const NewsCard = (props) => {
 		<>
 			{news.length > 0 ? (
 				<div className="news-card-grid-container">{news}</div>
-			) : null}
+			) : (
+				<Spinner />
+			)}
 		</>
 	);
 };

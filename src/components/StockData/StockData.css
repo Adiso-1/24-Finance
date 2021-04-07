@@ -40,6 +40,16 @@
 	height: 300px;
 	width: 800px;
 }
+@media only screen and (max-width: 1250px) {
+	.stock-data-container .footer-container {
+		background: var(--gray-blue-color);
+		color: #fff;
+		padding: 10px;
+		position: absolute;
+		width: 100%;
+		bottom: auto;
+	}
+}
 @media only screen and (max-width: 1000px) {
 	.container {
 		flex-direction: column;

@@ -24,7 +24,7 @@ const StockData = () => {
 		getData();
 	}, []);
 	return (
-		<>
+		<div className="stock-data-container">
 			{Object.keys(data).length > 0 ? (
 				<div className="container">
 					<div>
@@ -136,7 +136,7 @@ const StockData = () => {
 			) : null}
 			<NewsCard type="search" keywords={symbol} articelNum={4} />
 			<Footer />
-		</>
+		</div>
 	);
 };
 export default StockData;

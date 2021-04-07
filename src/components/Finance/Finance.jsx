@@ -9,7 +9,7 @@ const Finance = () => {
 	const names = ['S&P 500', 'Nasdaq', 'Dow 30', 'Russel 2000', 'BTC/USD'];
 	const symbols = ['SPX', 'IXIC', 'DJI', 'RUT', 'BTC/USD'];
 	return (
-		<div>
+		<div className="finance-container">
 			<div className="index-navbar">
 				{symbols.map((symbol, i) => {
 					return (

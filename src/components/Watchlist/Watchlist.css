@@ -21,7 +21,7 @@
 .news-for-watchlist {
 	padding: 5px;
 }
-.news-for-watchlist span {
+.news-for-watchlist h3 {
 	text-align: center;
 }
 
@@ -29,7 +29,7 @@
 .watchlist-news .news-card:first-child,
 .watchlist-news .news-card {
 	grid-column: span 2;
-	margin: 0.8rem;
+	/* margin: 0.8rem; */
 }
 .watchlist-news .all-news-card-contnet {
 	display: flex;
@@ -39,6 +39,14 @@
 }
 .watchlist-news .news-card-grid-container {
 	grid-template-columns: repeat(2, 1fr);
+}
+.watchlist-page .footer-container {
+	background: var(--gray-blue-color);
+	color: #fff;
+	padding: 10px;
+	position: absolute;
+	width: 100%;
+	bottom: auto;
 }
 @media only screen and (max-width: 550px) {
 	.news-card:first-child .all-news-card-contnet {
