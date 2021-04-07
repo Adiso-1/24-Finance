@@ -28,15 +28,15 @@ const LineGraph = (props) => {
 			const data = response[0].data;
 			const labels = data.values.map((el) => el.datetime.slice(11));
 			const quots = data.values.map((el) => el.close);
+			const chartColor =
+				Number(quots[0]) > Number(quots[quots.length - 1]) ? 'green' : 'red';
 			setChartData({
 				labels: labels.reverse(),
 				datasets: [
 					{
 						data: quots.reverse(),
-						backgroundColor:
-							Number(quots[0]) > Number(quots[quots.length - 1])
-								? 'green'
-								: 'red',
+						backgroundColor: chartColor,
+
 						borderWidth: 0,
 						tension: 0,
 					},
@@ -58,9 +58,11 @@ const LineGraph = (props) => {
 		lastNum = Number(
 			chartData.datasets[0].data[chartData.datasets[0].data.length - 1]
 		);
-		changeNum =
-			Number(chartData.datasets[0].data[0]) -
-			chartData.datasets[0].data[chartData.datasets[0].data.length - 1];
+		changeNum = Number(
+			chartData.datasets[0].data[chartData.datasets[0].data.length - 1] -
+				chartData.datasets[0].data[0]
+		);
+		console.log(firstNum);
 	}
 	return (
 		<div className="chart-graph">
@@ -107,7 +109,7 @@ const LineGraph = (props) => {
 									beginAtZero: false,
 								},
 								gridLines: {
-									display: false,
+									display: true,
 								},
 							},
 						],

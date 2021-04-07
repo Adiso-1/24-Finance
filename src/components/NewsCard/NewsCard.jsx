@@ -35,16 +35,23 @@ const NewsCard = (props) => {
 				return (
 					<div className="news-card" key={el.id}>
 						<div className="all-news-card-contnet">
-							<img
-								src={el.image === 'None' ? defaultImg : el.image}
-								alt="UNAVAILABLE"
-							/>
+							<a target="_blank" href={el.url}>
+								<img
+									className="news-image"
+									src={el.image === 'None' ? defaultImg : el.image}
+									alt="UNAVAILABLE"
+								/>
+							</a>
 							<div className="content">
-								<p className="card-title">{el.title}</p>
+								<a target="_blank" href={el.url}>
+									<p className="card-title">{el.title}</p>
+								</a>
 								<p className="card-content">{el.description}</p>
 							</div>
 						</div>
-						<a href={el.url}>Read More..</a>
+						<a target="_blank" className="link" href={el.url}>
+							Read More..
+						</a>
 					</div>
 				);
 			}
