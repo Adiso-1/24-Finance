@@ -16,7 +16,7 @@ const AddStock = (props) => {
 	const handleChange = (e) => {
 		setStock(e.target.value);
 	};
-	const onSearch = (stock) => {
+	const onSearch = (stockSymbol, stockName) => {
 		if (stockPicked.includes(stock)) {
 			setTimeout(() => {
 				setIsStockWatched(false);
@@ -24,9 +24,10 @@ const AddStock = (props) => {
 			setIsStockWatched(true);
 		} else {
 			const temp = [...stockPicked];
-			temp.push(stock);
+			temp.push(stockSymbol);
+			temp.push(stockName);
 			setStockPicked(temp);
-			props.getStock(stock);
+			props.getStock(stockSymbol, stockName);
 		}
 	};
 
@@ -102,7 +103,9 @@ const AddStock = (props) => {
 											key={i}
 											onClick={(e) =>
 												onSearch(
-													e.target.parentElement.firstElementChild.innerHTML
+													e.target.parentElement.firstElementChild.innerHTML,
+													e.target.parentElement.firstElementChild
+														.nextElementSibling.innerHTML
 												)
 											}
 										>

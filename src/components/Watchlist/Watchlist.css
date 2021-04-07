@@ -21,14 +21,15 @@
 .news-for-watchlist {
 	padding: 5px;
 }
-.news-for-watchlist h5 {
-	text-decoration: underline;
+.news-for-watchlist span {
+	text-align: center;
 }
 
 /*  */
 .watchlist-news .news-card:first-child,
 .watchlist-news .news-card {
 	grid-column: span 2;
+	margin: 0.8rem;
 }
 .watchlist-news .all-news-card-contnet {
 	display: flex;

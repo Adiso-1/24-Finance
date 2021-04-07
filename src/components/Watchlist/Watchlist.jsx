@@ -40,9 +40,11 @@ const Watchlist = () => {
 		return data;
 	};
 	//! CREATE
-	const addStock = async (stock) => {
+	const addStock = async (stock, name) => {
+		console.log(stock);
 		const { data } = await mockApi.post('/watchlist', {
 			symbol: stock,
+			name: name,
 			shares: 0,
 		});
 		setStocksData([...stocksData, data]);
@@ -85,14 +87,17 @@ const Watchlist = () => {
 	const handleAddStock = async () => {
 		setIsAdd(!isAdd);
 	};
-
+	console.log(stocksData);
 	return (
 		<div>
 			<h1 className="watchlist-header">My Watchlist</h1>
 			<div className="watchlist-container">
 				<button onClick={handleAddStock}>+ Add Symbol</button>
 				{isAdd && (
-					<AddStock setIsAdd={setIsAdd} getStock={(stock) => addStock(stock)} />
+					<AddStock
+						setIsAdd={setIsAdd}
+						getStock={(stock, name) => addStock(stock, name)}
+					/>
 				)}
 				{stocksData.length > 0 ? (
 					<WatchTable
@@ -122,7 +127,9 @@ const Watchlist = () => {
 					? stocksData.map((el) => {
 							return (
 								<div key={el.id} className="news-for-watchlist">
+									<h3>Because you watched {el.name}</h3>
 									<NewsCard
+										title={el.symbol}
 										type="search"
 										category="trading"
 										articelNum={3}
