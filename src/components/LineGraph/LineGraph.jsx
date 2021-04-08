@@ -62,7 +62,6 @@ const LineGraph = (props) => {
 			chartData.datasets[0].data[chartData.datasets[0].data.length - 1] -
 				chartData.datasets[0].data[0]
 		);
-		console.log(firstNum);
 	}
 	return (
 		<div className="chart-graph">
