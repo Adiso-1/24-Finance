@@ -48,6 +48,19 @@
 	width: 100%;
 	bottom: auto;
 }
+.watchlist-page .footer-container.stick-to-bottom {
+	background: var(--gray-blue-color);
+	color: #fff;
+	padding: 10px;
+	position: absolute;
+	width: 100%;
+	bottom: 0;
+}
+.my-watchlist {
+	display: flex;
+	justify-content: space-evenly;
+	align-items: center;
+}
 @media only screen and (max-width: 550px) {
 	.news-card:first-child .all-news-card-contnet {
 		display: flex;
@@ -70,5 +83,13 @@
 	}
 	.watchlist-container {
 		padding: 5px;
+	}
+}
+@media only screen and (max-width: 750px) {
+	.my-watchlist {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-evenly;
+		align-items: center;
 	}
 }

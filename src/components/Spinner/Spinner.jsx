@@ -1,28 +1,28 @@
 import './Spinner.css';
 const Spinner = () => {
 	return (
-		<div class="spinner-container">
-			<div class="center"></div>
+		<div className="spinner-container">
+			<div className="center"></div>
 
-			<div class="inner">
-				<div class="inner__item" id="inner__item1"></div>
-				<div class="inner__item" id="inner__item2"></div>
-				<div class="inner__item" id="inner__item3"></div>
-				<div class="inner__item" id="inner__item4"></div>
+			<div className="inner">
+				<div className="inner__item" id="inner__item1"></div>
+				<div className="inner__item" id="inner__item2"></div>
+				<div className="inner__item" id="inner__item3"></div>
+				<div className="inner__item" id="inner__item4"></div>
 			</div>
 
-			<div class="outer">
-				<div class="outer__item" id="outer__item1"></div>
-				<div class="outer__item" id="outer__item2"></div>
-				<div class="outer__item" id="outer__item3"></div>
-				<div class="outer__item" id="outer__item4"></div>
+			<div className="outer">
+				<div className="outer__item" id="outer__item1"></div>
+				<div className="outer__item" id="outer__item2"></div>
+				<div className="outer__item" id="outer__item3"></div>
+				<div className="outer__item" id="outer__item4"></div>
 			</div>
-			<div class="loading">
+			{/* <div className="loading">
 				Loading
-				<span class="loading__dot">.</span>
-				<span class="loading__dot">.</span>
-				<span class="loading__dot">.</span>
-			</div>
+				<span className="loading__dot">.</span>
+				<span className="loading__dot">.</span>
+				<span className="loading__dot">.</span>
+			</div> */}
 		</div>
 	);
 };

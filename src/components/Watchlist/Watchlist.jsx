@@ -7,6 +7,7 @@ import AddStock from '../AddStock/AddStock';
 import EditStock from '../EditStock/EditStock';
 import NewsCard from '../NewsCard/NewsCard';
 import Footer from '../Footer/Footer';
+import PieChart from '../PieChart/PieChart';
 
 const Watchlist = () => {
 	const [tempStock, setTempStock] = useState({});
@@ -87,10 +88,18 @@ const Watchlist = () => {
 	const handleAddStock = async () => {
 		setIsAdd(!isAdd);
 	};
-	console.log(stocksData);
+
+	let portfolioValue = 0;
+	stocksData.map((el) => {
+		portfolioValue += el.marketValue;
+	});
 	return (
 		<div className="watchlist-page">
-			<h1 className="watchlist-header">My Watchlist</h1>
+			<h1 className="watchlist-header">
+				My Watchlist{' '}
+				{portfolioValue > 0 &&
+					portfolioValue.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',') + '$'}
+			</h1>
 			<div className="watchlist-container">
 				<button onClick={handleAddStock}>+ Add Symbol</button>
 				{isAdd && (
@@ -100,11 +109,14 @@ const Watchlist = () => {
 					/>
 				)}
 				{stocksData.length > 0 ? (
-					<WatchTable
-						removeStock={(id) => removeStock(id)}
-						editStock={(e, stock, newStock) => editStock(e, stock, newStock)}
-						data={stocksData}
-					/>
+					<div className="my-watchlist">
+						<WatchTable
+							removeStock={(id) => removeStock(id)}
+							editStock={(e, stock, newStock) => editStock(e, stock, newStock)}
+							data={stocksData}
+						/>
+						{portfolioValue > 0 && <PieChart data={stocksData} />}
+					</div>
 				) : null}
 			</div>
 			{isEdit && (
@@ -114,13 +126,12 @@ const Watchlist = () => {
 					finalEdit={finalEdit}
 				/>
 			)}
-			<hr />
 			<section className="watchlist-news">
 				<h1 className="portfolio-news-header">Watchlist News</h1>
 				{stocksData.length > 0 ? null : (
 					<div>
 						<h5>No stocks to watch </h5>
-						<Footer stickToBottom={'stick-to-bottom'} />
+						{/* <Footer stickToBottom={'stick-to-bottom'} /> */}
 					</div>
 				)}
 				{stocksData.length > 0
@@ -140,7 +151,11 @@ const Watchlist = () => {
 					  })
 					: null}
 			</section>
-			<Footer />
+			{portfolioValue > 0 ? (
+				<Footer />
+			) : (
+				<Footer stickToBottom={'stick-to-bottom'} />
+			)}
 		</div>
 	);
 };
