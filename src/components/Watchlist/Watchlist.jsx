@@ -23,7 +23,6 @@ const Watchlist = () => {
 				const response = await twelveData.get('/quote?', {
 					params: {
 						symbol: el.symbol,
-						// apikey: 'f2bdff475b4b4faaa092bd8ad2f3c0e5',
 						apikey: '8a95a209d3424afd86179d7911286784',
 					},
 				});

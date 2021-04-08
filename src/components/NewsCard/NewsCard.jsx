@@ -39,6 +39,7 @@ const NewsCard = (props) => {
 								<img
 									className="news-image"
 									src={el.image === 'None' ? defaultImg : el.image}
+									// src={el.image}
 									alt="UNAVAILABLE"
 								/>
 							</a>

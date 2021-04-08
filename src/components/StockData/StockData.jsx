@@ -9,7 +9,7 @@ import './StockData.css';
 const StockData = () => {
 	const [data, setData] = useState({});
 	const symbol = useParams().symbol;
-	const apikey = 'f2bdff475b4b4faaa092bd8ad2f3c0e5';
+	const apikey = '9f63c36568334145bd8d55f22294761a';
 	const time = new Date().getHours();
 	useEffect(() => {
 		const getData = async () => {
