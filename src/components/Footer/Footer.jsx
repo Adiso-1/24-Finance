@@ -6,14 +6,17 @@ const Footer = (props) => {
 		<div className={`footer-container ${props.stickToBottom}`}>
 			<ul className="footer-list">
 				<li>
-					<Link to="/https://github.com/Adiso-1">
+					<a target="_blank" href="https://github.com/Adiso-1">
 						<i className="fab fa-github fa-2x"></i>
-					</Link>
+					</a>
 				</li>
 				<li>
-					<Link to="/https://www.linkedin.com/in/adi-levy-a2138b160/">
+					<a
+						target="_blank"
+						href="https://www.linkedin.com/in/adi-levy-a2138b160/"
+					>
 						<i className="fab fa-linkedin-in fa-2x"></i>
-					</Link>
+					</a>
 				</li>
 			</ul>
 		</div>
