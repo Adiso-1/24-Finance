@@ -10,8 +10,6 @@ const AddStock = (props) => {
 	const [isStockWatched, setIsStockWatched] = useState(false);
 	const ref = useRef(null);
 
-	console.log(stockPicked);
-
 	useEffect(() => {
 		setStockPicked(props.stocksData.map((el) => el.symbol));
 		ref.current.focus();
@@ -21,7 +19,6 @@ const AddStock = (props) => {
 		setStock(e.target.value);
 	};
 	const onSearch = (stockSymbol, stockName) => {
-		console.log('HELLLO');
 		if (stockPicked.includes(stockSymbol)) {
 			setTimeout(() => {
 				setIsStockWatched(false);
