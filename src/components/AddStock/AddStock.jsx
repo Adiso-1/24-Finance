@@ -10,23 +10,25 @@ const AddStock = (props) => {
 	const [isStockWatched, setIsStockWatched] = useState(false);
 	const ref = useRef(null);
 
+	console.log(stockPicked);
+
 	useEffect(() => {
+		setStockPicked(props.stocksData.map((el) => el.symbol));
 		ref.current.focus();
 	}, []);
+
 	const handleChange = (e) => {
 		setStock(e.target.value);
 	};
 	const onSearch = (stockSymbol, stockName) => {
-		if (stockPicked.includes(stock)) {
+		console.log('HELLLO');
+		if (stockPicked.includes(stockSymbol)) {
 			setTimeout(() => {
 				setIsStockWatched(false);
 			}, 2000);
 			setIsStockWatched(true);
 		} else {
-			const temp = [...stockPicked];
-			temp.push(stockSymbol);
-			temp.push(stockName);
-			setStockPicked(temp);
+			setStockPicked([...stockPicked, stockSymbol]);
 			props.getStock(stockSymbol, stockName);
 		}
 	};

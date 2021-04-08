@@ -41,7 +41,6 @@ const Watchlist = () => {
 	};
 	//! CREATE
 	const addStock = async (stock, name) => {
-		console.log(stock);
 		const { data } = await mockApi.post('/watchlist', {
 			symbol: stock,
 			name: name,
@@ -105,6 +104,7 @@ const Watchlist = () => {
 					<AddStock
 						setIsAdd={setIsAdd}
 						getStock={(stock, name) => addStock(stock, name)}
+						stocksData={stocksData}
 					/>
 				)}
 				{stocksData.length > 0 ? (
