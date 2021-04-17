@@ -5,14 +5,22 @@ import { Line } from 'react-chartjs-2';
 
 const LineGraph = (props) => {
 	const [chartData, setChartData] = useState({});
-	const year = '2021';
+	// Adjustments
+	const marketDay = new Date().getDay();
+	const year = new Date().getFullYear();
 	const time = new Date().getHours();
-	const month = (new Date().getMonth() + 1).toString();
+	let month = (new Date().getMonth() + 1).toString();
+	if (month.length === 1) {
+		month = '0' + month;
+	}
+	const subtractDays = marketDay === 0 ? 2 : 1;
 	const day =
 		time > 15 && time < 24
 			? new Date().getDate().toString()
-			: new Date().getDate().toString() - 1;
-	// console.log(day + '-' + month + '-' + year);
+			: new Date().getDate().toString() - subtractDays;
+	if (day.length === 1) {
+		day = '0' + day;
+	}
 	const chart = async () => {
 		try {
 			const promise = twelveData.get('/time_series?', {
@@ -21,15 +29,20 @@ const LineGraph = (props) => {
 					interval: props.interval,
 					apikey: props.apikey,
 					dp: 2,
-					start_date: `${year}-0${month}-0${day}`,
+					start_date: `${year}-${month}-${day}`,
 				},
 			});
 			const response = await Promise.all([promise]);
 			const data = response[0].data;
 			const labels = data.values.map((el) => el.datetime.slice(11));
-			const quots = data.values.map((el) => el.close);
-			const chartColor =
-				Number(quots[0]) > Number(quots[quots.length - 1]) ? 'green' : 'red';
+			const quots = data.values.map((el, i) =>
+				i === 390 ? el.open : el.close
+			);
+
+			const openRate = Number(quots[quots.length - 1]);
+			const closeRate = Number(quots[0]);
+
+			const chartColor = closeRate > openRate ? 'green' : 'red';
 			setChartData({
 				labels: labels.reverse(),
 				datasets: [

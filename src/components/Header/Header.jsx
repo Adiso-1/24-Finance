@@ -16,9 +16,6 @@ const Header = () => {
 					<Link to="/watchlist">Watchlist</Link>
 				</li>
 			</div>
-			<div className="right-navbar">
-				<li>Sign In</li>
-			</div>
 		</ul>
 	);
 };

@@ -29,7 +29,7 @@ const NewsCard = (props) => {
 	}, []);
 
 	const news = articles
-		.filter((el) => el.image !== 'None')
+		// .filter((el) => el.image !== 'None')
 		.map((el, i) => {
 			if (props.articelNum > i) {
 				return (
